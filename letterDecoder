@@ -1,0 +1,139 @@
+
+import java.util.*;
+import java.io.*;
+public class letterDecoder {
+
+  public static void main(String[] args) throws Exception {
+		
+		//creates, loads, prints Scanner input
+		Scanner input = new Scanner(new File(args[0]));
+		
+		while(
+				input.hasNextLine()
+			){String s = input.nextLine();
+			//System.out.println(s);
+			char[] A = s.toCharArray();
+			
+			}  
+			
+		
+		letterDecoder ld = new letterDecoder();
+	      int
+	         patternNumber = 1;
+
+	      if (args.length > 0){
+	         try{
+	  
+	            input = new Scanner(new File(args[0]));
+
+	            while (input.hasNextLine()){
+	               ld.loadPattern(input);
+	               //ld.extractFeatures();
+	               ld.classifyLetter();
+	               //ld.reportToStdout(patternNumber);
+	               patternNumber++;
+	            }
+	         }
+	         catch(NullPointerException e){
+	            System.out.println("The file name may have been a null string.\nProgram Terminating." + e);
+	         }
+	         catch(FileNotFoundException e){
+	            System.out.println("No file with the name " + args[0]
+	            + "\nProgram terminating." + e);
+	         }
+	      }
+	      else // args is empty
+	         System.out.println("You must supply the input file name on"
+	         + " the command line.");
+		
+		
+	   }
+		
+		public static void test (int x [][]){
+			for(int row=1;row<10;row++){
+				for(int column=1;row<x[row].length;column++){
+					System.out.print(x[row][column]);
+				}
+			
+			}
+		}
+	/** Matt Perry
+	 * 	Program 1
+	 * 	Professor Briggs
+	 * 	COS 161 Tu-Thur 10:15
+	 */
+	
+		// value for letter when there is no match
+	   public static final char UNRECOGNIZED_LETTER = ' ';
+
+	   // size of pattern array
+	   public static final int PATTERN_SIZE = 10;
+
+	   // size of grid array
+	   public static final int GRID_SIZE = PATTERN_SIZE + 2;
+	
+	   int grid [][];
+	   int massbottom, corners, tees;
+		
+	   char letter;
+	   public letterDecoder(){
+		   grid = new int[GRID_SIZE][GRID_SIZE];
+		   letter = UNRECOGNIZED_LETTER;
+	      
+
+	   /** default constructor
+	   *grid will be created as a 12x12 array of 0's
+	   *the integer data members are initialized to 0
+	   * by default already; letter is set to ' '
+	   */
+	   
+		   
+		  
+	   }
+	   public void loadPattern(Scanner input){
+		  
+		   boolean hasline = true, $found = false;
+		   String currLine = new String(input.nextLine());
+		   int linelength = currLine.length();
+		   
+		   if(!$found && hasline){
+			   if(input.hasNextLine())
+			   currLine = input.nextLine();
+			   
+			   for(int row=1;row>=10;row++){
+				   for(int col=1;col>=10;col++)
+			   currLine.charAt(row);
+			   System.out.println(currLine);
+			   }
+		   }
+		}
+	   public void extractFeatures(){
+		   
+		   int i,teecount,cornercount,mbcount;
+		   String currLine = new String(input.nextLine());
+		   
+		   if(input.hasNextLine()){
+			   
+		   }
+		   
+		   
+	   }
+	 
+	   public void classifyLetter(){
+		   int corner,tee,massbottom;
+		   String letter;
+		   
+		   if(corner>=3 && tee<=2){
+			   letter.equals('P');
+		   }
+			   
+		   }
+		   
+	   }
+	   
+	   public void reportToStdout(){
+		   
+	   }
+	   
+	
+	}
