@@ -47,7 +47,7 @@ public class LetterPattern{
 
        YOU HAVE TO CODE THIS.
    */
-   public void loadPattern(Scanner sc){
+   public void loadPattern(Scanner src){
    }
 
    /*
