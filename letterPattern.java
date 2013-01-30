@@ -55,21 +55,32 @@ public class LetterPattern{
    for(int x=1;x<=array.length; x++){
       for(int y=1;y<=array.length; y++)
       
-      
+      //if center not 1
       if(i!=1){
          i++;
-      }
+      
       //if tee
-      if(i==1 && x[i+1]==1 && x[i-1]==1 && (y[i-1]==1 || y[i+1]==1)){
+      if(x[i+1]==1 && x[i-1]==1 && (y[i-1] ^ y[i+1]==1)){
          tee++;
-      }else if(i==1 && y[i+1]==1 && y[i-1]==1 && (x[i+1]==1 || x[i-1]==1)){
+      }else if(y[i+1]==1 && y[i-1]==1 && (x[i+1]==1 || x[i-1]==1)){
          tee++
       
       //if corner
-      }else if(i==1 && x[i-1]==1 && y[i-1]==1){
-         corner++
-      }else if(i==1 && x[i+1])
+      }else if(x[i-1]^x[x+1]==1 && y[i-1]==1){
+         corner++;
+      }else if(x[i+1]==1 && y[i+1]^y[i-1]==1){
+         corner++;
       
+      //if massbottom
+      }else if(x[i-1]==1 && x[i+1]==1){
+         massbottom++;
+      }else if(y[i+1]==1 && y[i-1]==1){
+         massbottom++;
+      }else{
+         i++;
+      }
+      
+      }
       
    /*
        precondition: assumes the grid array is not null and is a 12x12
