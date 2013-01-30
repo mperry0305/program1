@@ -49,7 +49,28 @@ public class LetterPattern{
    */
    public void loadPattern(Scanner src){
    }
-
+   
+   int massbottom, corner, tee;
+   
+   for(int x=1;x<=array.length; x++){
+      for(int y=1;y<=array.length; y++)
+      
+      
+      if(i!=1){
+         i++;
+      }
+      //if tee
+      if(i==1 && x[i+1]==1 && x[i-1]==1 && (y[i-1]==1 || y[i+1]==1)){
+         tee++;
+      }else if(i==1 && y[i+1]==1 && y[i-1]==1 && (x[i+1]==1 || x[i-1]==1)){
+         tee++
+      
+      //if corner
+      }else if(i==1 && x[i-1]==1 && y[i-1]==1){
+         corner++
+      }else if(i==1 && x[i+1])
+      
+      
    /*
        precondition: assumes the grid array is not null and is a 12x12
           array with 0's and 1's.
@@ -61,6 +82,8 @@ public class LetterPattern{
 
        YOU HAVE TO CODE THIS.
    */
+   }
+}
    public void extractFeatures(){
    }
 
