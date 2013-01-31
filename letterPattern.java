@@ -97,9 +97,9 @@ public class LetterPattern{
       i++;
       
       //if tee
-      else if(grid[r][c]=1 && grid[r+1][c] && grid[r-1][c] && grid[r][c+1]^grid[r][c-1])
+      else if(grid[r][c]=1 && grid[r+1][c]=1 && grid[r-1][c]=1 && grid[r][c+1]^grid[r][c-1]=1)
       tee++;
-      else if(grid[r])
+      else if(grid[r][c+1]=1 && grid[r][c-1] && grid[r-1][c]^grid[r+1][c]=1)
       
       //if corner
       }else if(x[c-1]^x[c+1]==1 && y[c-1]==1){
