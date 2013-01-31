@@ -52,12 +52,13 @@ public class LetterPattern{
    private boolean exit, boo0, boo1;
    private int 0count, 1count, NA;
 
-   String s = new string('contents of input file');
+   //contents of input file
+   String s = new string(src.nextLine());
 
 	for(int i=1;i<=s.length;i++){
 		if(s.charAt(i)== '$'){
 		exit = true;
-      break;
+      		break;
       }else if(s.charAt(i)==UNRECOGNIZED_LETTER{
          boo0=true;
          0count++;
