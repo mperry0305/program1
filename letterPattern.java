@@ -35,6 +35,9 @@ public class LetterPattern{
    public LetterPattern(){
       grid = new int[GRID_SIZE][GRID_SIZE];
       letter = UNRECOGNIZED_LETTER;
+ 
+   	
+   
    }
 
    /*
@@ -49,77 +52,71 @@ public class LetterPattern{
    */
    public void loadPattern(Scanner src){
       
-   private boolean exit, boo0, boo1;
+   private boolean exit, haventSeen$, hasLine;
    private int 0count, 1count, NA;
 
    //contents of input file
-   String s = new string(src.nextLine());
+   String s = src.nextLine();
+   hasLine = haventSeen$ =true;
 
-	for(int i=1;i<=s.length;i++){
-		if(s.charAt(i)== '$'){
-		exit = true;
-      		break;
-      }else if(s.charAt(i)==UNRECOGNIZED_LETTER{
-         boo0=true;
-         0count++;
-      }else if(s.charAt(i)=='*'{
-         boo1=true;
-         1count++;
-      }else
-         exit = true;
-         NA++;
-      }
+	for(int r=1;r<=10;r++){
+		for(int c=1;c<=10;c++)
+	if (hasLine && haventSeen$ && c<=s.length()){ 
+	if (s.charAt(c-1)=='*'){
+   		grid[r][c] = 1;
+   		1count++;
+   	else{
+   		grid[r][c]=0;
+   		0count++;
+	if(s.charAt(c-1)=='$')
+   		haventSeen$=false;
 
-
-      
+      	}
+	}else
+		grid[r][c]=0;
+		if(i<10)
+	if(src.hasNextLine()){
+		s=src.nextLine();
+		
+	}else
+		hasLine=false;
+	}
    }
+}
+   public void extractFeatures(){
+   	
+   	int i, massbottom, corner, tee;
+   	boolean hasLine=true;
+   	String s = src.nextLine();
    
-   int massbottom, corner, tee;
-   
-   for(int x=1;x<=array.length; x++){
-      for(int y=1;y<=array.length; y++)
+   for(int r=1;r<=10; r++){
+      for(int c=1;c<=10; c++)
       
       //if center not 1
-      if(i!=1){
-         i++;
+      if(hasLine && s.charAt(c-1)!=0){
+      i++;
       
       //if tee
-      if(x[i+1]==1 && x[i-1]==1 && (y[i-1] ^ y[i+1]==1)){
-         tee++;
-      }else if(y[i+1]==1 && y[i-1]==1 && (x[i+1]==1 || x[i-1]==1)){
-         tee++
+      else if(grid[r][c]=1 && grid[r+1][c] && grid[r-1][c] && grid[r][c+1]^grid[r][c-1])
+      tee++;
+      else if(grid[r])
       
       //if corner
-      }else if(x[i-1]^x[x+1]==1 && y[i-1]==1){
+      }else if(x[c-1]^x[c+1]==1 && y[c-1]==1){
          corner++;
-      }else if(x[i+1]==1 && y[i+1]^y[i-1]==1){
+      }else if(x[c+1]==1 && y[c+1]^y[c-1]==1){
          corner++;
       
       //if massbottom
-      }else if(x[i-1]==1 && x[i+1]==1){
+      }else if(grid[c-1]==1 && grid[c+1]==1){
          massbottom++;
-      }else if(y[i+1]==1 && y[i-1]==1){
+      }else if(grid[c+1]==1 && grid[c-1]==1){
          massbottom++;
       }else{
          i++;
       }
       
       }
-      
-   /*
-       precondition: assumes the grid array is not null and is a 12x12
-          array with 0's and 1's.
-
-
-       postcondition: the instance specific data members, massbottom,
-          corners, and tees are calculated from the current contents of
-          grid according to the project specification.
-
-       YOU HAVE TO CODE THIS.
-   */
-   }
-}
-   public void extractFeatures(){
    }
 
 
