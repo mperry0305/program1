@@ -62,17 +62,22 @@ public class LetterPattern{
 	for(int r=1;r<=10;r++){
 		for(int c=1;c<=10;c++)
 	if (hasLine && haventSeen$ && c<=s.length()){ 
+	
+	//grid[r][c] set to 1
 	if (s.charAt(c-1)=='*'){
    		grid[r][c] = 1;
    		1count++;
+   	
+   	//grid[r][c] set to 0
    	else{
    		grid[r][c]=0;
    		0count++;
+	
 	if(s.charAt(c-1)=='$')
    		haventSeen$=false;
-
-      	}
-	}else
+   	
+	//insurance
+	}}else
 		grid[r][c]=0;
 		if(i<10)
 	if(src.hasNextLine()){
@@ -85,40 +90,27 @@ public class LetterPattern{
 }
    public void extractFeatures(){
    	
-   	int i, massbottom, corner, tee;
-   	boolean hasLine=true;
-   	String s = src.nextLine();
+   int i, massbottom, corner, tee;
+   boolean hasLine, isTee, isCorner, isMB;
+   
+   String s = src.nextLine();
+   hasline=true;
    
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++)
       
-      //if center not 1
-      if(hasLine && s.charAt(c-1)!=0){
-      i++;
+      //if 1
+      if(hasLine && c<=s.length && s.charAt(c-1)!=){
+      	i++;
+      	if
+      
       
       //if tee
       else if(grid[r][c]=1 && grid[r+1][c]=1 && grid[r-1][c]=1 && grid[r][c+1]^grid[r][c-1]=1)
       tee++;
       else if(grid[r][c+1]=1 && grid[r][c-1] && grid[r-1][c]^grid[r+1][c]=1)
       
-      //if corner
-      }else if(x[c-1]^x[c+1]==1 && y[c-1]==1){
-         corner++;
-      }else if(x[c+1]==1 && y[c+1]^y[c-1]==1){
-         corner++;
-      
-      //if massbottom
-      }else if(grid[c-1]==1 && grid[c+1]==1){
-         massbottom++;
-      }else if(grid[c+1]==1 && grid[c-1]==1){
-         massbottom++;
-      }else{
-         i++;
-      }
-      
-      }
-   }
-
+    
 
    /*
        precondition: assumes the massbottom, corners, and tees 
