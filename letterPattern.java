@@ -48,6 +48,29 @@ public class LetterPattern{
        YOU HAVE TO CODE THIS.
    */
    public void loadPattern(Scanner src){
+      
+   private boolean exit, boo0, boo1;
+   private int 0count, 1count, NA;
+
+   String s = new string('contents of input file');
+
+	for(int i=1;i<=s.length;i++){
+		if(s.charAt(i)== '$'){
+		exit = true;
+      break;
+      }else if(s.charAt(i)==UNRECOGNIZED_LETTER{
+         boo0=true;
+         0count++;
+      }else if(s.charAt(i)=='*'{
+         boo1=true;
+         1count++;
+      }else
+         exit = true;
+         NA++;
+      }
+
+
+      
    }
    
    int massbottom, corner, tee;
