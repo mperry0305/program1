@@ -32,7 +32,7 @@ public class LetterPattern{
    // grid will be created as a 12x12 array of 0's
    // the integer data members are initialized to 0
    // by default already; letter is set to ' '
-   public LetterPattern(){
+public LetterPattern(){
       grid = new int[GRID_SIZE][GRID_SIZE];
       letter = UNRECOGNIZED_LETTER;
  
@@ -50,7 +50,7 @@ public class LetterPattern{
 
        YOU HAVE TO CODE THIS.
    */
-   public void loadPattern(Scanner src){
+public void loadPattern(Scanner src){
       
    private boolean exit, haventSeen$, hasLine;
    private int 0count, 1count, NA;
@@ -88,9 +88,9 @@ public class LetterPattern{
 	}
    }
 }
-   public void extractFeatures(){
+public void extractFeatures(){
    	
-   int i, massbottom, corner, tee;
+   int i, massbottom, corner, tee, total;
    boolean hasLine, isTee, isCorner, isMB;
    
    String s = src.nextLine();
@@ -99,16 +99,12 @@ public class LetterPattern{
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++)
       
-      //if 1
-      if(hasLine && c<=s.length && s.charAt(c-1)!=){
-      	i++;
-      	if
-      
-      
-      //if tee
-      else if(grid[r][c]=1 && grid[r+1][c]=1 && grid[r-1][c]=1 && grid[r][c+1]^grid[r][c-1]=1)
-      tee++;
-      else if(grid[r][c+1]=1 && grid[r][c-1] && grid[r-1][c]^grid[r+1][c]=1)
+      //if center 1
+      if(hasLine && c<=s.length && grid[r][c]=1){
+      	
+      	//corner
+      	if(grid[r+1][c]=1 && grid[r-1][c-1]=1)
+      	
       
     
 
@@ -123,7 +119,7 @@ public class LetterPattern{
 
        YOU HAVE TO CODE THIS.
    */
-   public void classifyLetter(){
+public void classifyLetter(){
    }
 
 
@@ -142,7 +138,7 @@ public class LetterPattern{
           has been printed to the screen, line by line
 
    */
-   public void printPatternToScreen(){
+public void printPatternToScreen(){
 
    }
 
@@ -157,7 +153,7 @@ public class LetterPattern{
           reported to standard out labeled with patternNum
 
    */
-   public void reportResultsToStdout(int patternNum){
+public void reportResultsToStdout(int patternNum){
 
       System.out.println("\nResults for pattern# " + patternNum + "\n");
       printPatternToScreen();
@@ -181,7 +177,7 @@ public class LetterPattern{
       analyzes it.  It displays the results to the standard out.
 
    */
-   public static void main(String[] args){
+public static void main(String[] args){
 
       Scanner src;
       LetterPattern lp = new LetterPattern();
