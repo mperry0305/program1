@@ -38,18 +38,7 @@ public LetterPattern(){
  
    	
    
-   }
-
-   /*
-       precondition: assumes sc is not null and has a least one
-          more line of text in it.
-
-       postcondition: grid is loaded with 0's and 1's according to
-          the discussion in the project description based on what
-          remains in the input Scanner sc.
-
-       YOU HAVE TO CODE THIS.
-   */
+}
 public void loadPattern(Scanner src){
       
    private boolean exit, haventSeen$, hasLine;
@@ -90,7 +79,8 @@ public void loadPattern(Scanner src){
 }
 public void extractFeatures(){
    	
-   int i, massbottom, corner, tee, total;
+   private int i, massbottom, corner, tee, total;
+   
    boolean hasLine, isTee, isCorner, isMB;
    
    String s = src.nextLine();
@@ -101,9 +91,18 @@ public void extractFeatures(){
       
       //if center 1
       if(hasLine && c<=s.length && grid[r][c]==1){
+      	r0=grid[r][c];
+      	r1=grid[r+1][c];
+      	1r=grid[r-1][c];
+      	c0=grid[r][c];
+      	c1=grid[r][c+1];
+      	1c=grid[r][c-1];
+      	
+      	total+=(r0+r1+1r+c0+c1+1c);
+      	
       	
       	//corner
-      	if(grid[r+1][c]==1 && grid[r-1][c-1]==1)
+      	if(grid[r+1][c]==1 && grid[r][c-1]==1)
       	
       
     
