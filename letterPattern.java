@@ -100,10 +100,10 @@ public void extractFeatures(){
       for(int c=1;c<=10; c++)
       
       //if center 1
-      if(hasLine && c<=s.length && grid[r][c]=1){
+      if(hasLine && c<=s.length && grid[r][c]==1){
       	
       	//corner
-      	if(grid[r+1][c]=1 && grid[r-1][c-1]=1)
+      	if(grid[r+1][c]==1 && grid[r-1][c-1]==1)
       	
       
     
