@@ -80,6 +80,7 @@ public void loadPattern(Scanner src){
 public void extractFeatures(){
    	
    private int i, massbottom, corner, tee, total;
+   private int r0, r1, 1r, c0, c1, 1c;
    
    boolean hasLine, isTee, isCorner, isMB;
    
@@ -102,7 +103,13 @@ public void extractFeatures(){
       	
       	
       	//corner
-      	if(grid[r+1][c]==1 && grid[r][c-1]==1)
+      	if(grid[r+1][c]==1 && grid[r][c-1]==1 && total>=)
+      		while{
+      			Scanner src.hasNextLine(input);
+      			String s = new String src.nextLine();
+      			
+      		}else if(grid[r1][c1]=1 && grid[1r][1c]=1 && s.hasNext())
+      			
       	
       
     
