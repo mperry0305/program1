@@ -145,7 +145,11 @@ public void classifyLetter(){
 
    */
 public void printPatternToScreen(){
-
+	
+	for(int r=0;r<=10;r++){
+		for(int c=0;c<=10;c++)
+		System.out.printf(grid[r][c]);
+	}
    }
 
    /*
