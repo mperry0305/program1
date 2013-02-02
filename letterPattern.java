@@ -52,12 +52,12 @@ public void loadPattern(Scanner src){
 		for(int c=1;c<=10;c++)
 	if (hasLine && haventSeen$ && c<=s.length()){ 
 	
-	//grid[r][c] set to 1
+	//index set to 1
 	if (s.charAt(c-1)=='*'){
    		grid[r][c] = 1;
    		1count++;
    	
-   	//grid[r][c] set to 0
+   	//index set to 0
    	else{
    		grid[r][c]=0;
    		0count++;
@@ -65,7 +65,7 @@ public void loadPattern(Scanner src){
 	if(s.charAt(c-1)=='$')
    		haventSeen$=false;
    	
-	//insurance
+	//insurance 0
 	}}else
 		grid[r][c]=0;
 		if(i<10)
@@ -79,40 +79,48 @@ public void loadPattern(Scanner src){
 }
 public void extractFeatures(){
    	
-   private int i, massbottom, corner, tee, total;
+   private int i, massbottom, corner, tee, none, total;
    private int r0, r1, 1r, c0, c1, 1c;
    
    boolean hasLine, isTee, isCorner, isMB;
+   hasline=true;
    
    String s = src.nextLine();
-   hasline=true;
    
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++)
-      
-      //if center 1
-      if(hasLine && c<=s.length && grid[r][c]==1){
+      	
+      	//3x3 window
       	r0=grid[r][c];
       	r1=grid[r+1][c];
       	1r=grid[r-1][c];
       	c0=grid[r][c];
       	c1=grid[r][c+1];
       	1c=grid[r][c-1];
-      	
       	total+=(r0+r1+1r+c0+c1+1c);
-      	
+      
+      //if pattern
+      if(hasLine && c<=s.length && total<=4){
       	
       	//corner
-      	if(grid[r+1][c]==1 && grid[r][c-1]==1 && total>=)
-      		while{
-      			Scanner src.hasNextLine(input);
-      			String s = new String src.nextLine();
-      			
-      		}else if(grid[r1][c1]=1 && grid[1r][1c]=1 && s.hasNext())
-      			
+      	if(total=3 && grid[r][c]==1)
+      	corner++;
+      		
+      	//tee		
+      	if(total=4 && grid[r1][c1]=1 && grid[1r][c]=1 && s.hasNext())
+      	tee++;
       	
-      
-    
+      	//massbottom
+      	if(total<=4)
+      	massbottom++;
+      	
+      	}else{
+      		none++;
+      	}//not a pattern, move onto next spot)
+      		
+      	
+      }else
+}
 
    /*
        precondition: assumes the massbottom, corners, and tees 
