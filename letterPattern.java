@@ -80,9 +80,9 @@ public void loadPattern(Scanner src){
 public void extractFeatures(){
    	
    private int i, massbottom, corner, tee, none, total;
-   private int r0, r1, 1r, c0, c1, 1c;
+   private int a1,a2,a3,b1,b2,b3,c1,c2,c3;
    
-   boolean hasLine, isTee, isCorner, isMB;
+   boolean hasLine, isTee, isCorner, isMB, noPttrn;
    hasline=true;
    
    String s = src.nextLine();
@@ -91,20 +91,26 @@ public void extractFeatures(){
       for(int c=1;c<=10; c++)
       	
       	//3x3 window
-      	r0=grid[r][c];
-      	r1=grid[r+1][c];
-      	1r=grid[r-1][c];
-      	c0=grid[r][c];
-      	c1=grid[r][c+1];
-      	1c=grid[r][c-1];
-      	total+=(r0+r1+1r+c0+c1+1c);
+      	a1=grid[r-1][c+1];
+      	a2=grid[r][c+1];
+      	a3=grid[r+1][c+1];
+      	b1=grid[r-1][c];
+      	b2=grid[r][c];
+      	b3=grid[r+1][c];
+      	c1=grid[r-1][c-1];
+      	c2=grid[r][c-1];
+      	c3=grid[r+1][c-1];
+      	total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
       
       //if pattern
       if(hasLine && c<=s.length && total<=4){
       	
-      	//corner
-      	if(total=3 && grid[r][c]==1)
-      	corner++;
+      	//corner,tee
+      	if(total>=3 && r0==1){
+      		else if(total=3 && )
+      		
+      		
+      	}else noPttrn=true;
       		
       	//tee		
       	if(total=4 && grid[r1][c1]=1 && grid[1r][c]=1 && s.hasNext())
