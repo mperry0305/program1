@@ -68,7 +68,7 @@ public void loadPattern(Scanner src){
 	//insurance 0
 	}}else
 		grid[r][c]=0;
-		if(i<10)
+	
 	if(src.hasNextLine()){
 		s=src.nextLine();
 		
