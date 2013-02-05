@@ -79,16 +79,25 @@ public void loadPattern(Scanner src){
 }
 public void extractFeatures(){
    	
-   private int i, massbottom, corner, tee, none, total;
+   private int i=0, massbottom=0, corner=0, tee=0, none=0, total=0;
    private int a1,a2,a3,b1,b2,b3,c1,c2,c3;
    
-   boolean hasLine, isTee, isCorner, isMB, noPttrn;
-   hasline=true;
-   
-   String s = src.nextLine();
-   
+   boolean isTee, isCorner, isMB, noPttrn;
+
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++)
+      
+      if(grid[r][c]!=1){
+      	
+      	///bottom row
+      	c1=grid[r-1][c-1];
+      	c2=grid[r][c-1];
+      	c3=grid[r+1][c-1];
+      	
+      	massbottom+=(c1+c2+c3);
+      	isMB=true;
+      	
+      }else
       	
       	//3x3 window
       	a1=grid[r-1][c+1];
@@ -103,31 +112,15 @@ public void extractFeatures(){
       	total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
       
       //if pattern
-      if(hasLine && c<=s.length && total<=4){
+      if(total<=4){
+      	else if(total=3)
       	
-      	//corner,tee
-      	if(total>=3 && r0==1){
-      		else if(total=3 && )
       		
-      		
-      	}else noPttrn=true;
-      		
-      	//tee		
-      	if(total=4 && grid[r1][c1]=1 && grid[1r][c]=1 && s.hasNext())
-      	tee++;
-      	
-      	//massbottom
-      	if(total<=4)
-      	massbottom++;
       	
       	}else{
       		none++;
       	}//not a pattern, move onto next spot)
       		
-      	
-      }else
-}
-
    /*
        precondition: assumes the massbottom, corners, and tees 
           data members have been correctly calculated from the 
