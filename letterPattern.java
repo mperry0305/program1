@@ -79,7 +79,8 @@ public void loadPattern(Scanner src){
 }
 public void extractFeatures(){
    	
-   private int i=0, massbottom=0, corner=0, tee=0, none=0, total=0;
+   private int i=0, none=0, total=0;
+   	massbottom=0, corners=0, tees=0;
    private int a1,a2,a3,b1,b2,b3,c1,c2,c3;
    
    boolean isTee, isCorner, isMB, noPttrn;
@@ -111,38 +112,70 @@ public void extractFeatures(){
       	c3=grid[r+1][c-1];
       	total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
       
-      //if pattern
-      if(total<=4){
-      	else if(total=3)
+      //if tee
+      if(4==total){
+      	if(1==b1 && 1==b3 && (1==c2 || 1==a2)
+      	tees++;
+      	if(1==a2 && 1==c2 && (1==b1 || 1==b3)
+      	tees++;
       	
+      }
+      //if corner
+      if(3==total){
+      	if(1==a2 && (1==b1 || 1==b)
+      	corners++;
+      	if(1==c2 && (1==b1 || 1==b3)
+      	corners++;
+      }
       		
-      	
-      	}else{
+  	}else{
       		none++;
       	}//not a pattern, move onto next spot)
-      		
-   /*
-       precondition: assumes the massbottom, corners, and tees 
-          data members have been correctly calculated from the 
-          current contents of the grid.
-
-       postcondition: letter is assigned either the UNRECOGNIZED_LETTER
-         value if the features do not match any of the letter features,
-         or the letter whose features are matched.
-
-       YOU HAVE TO CODE THIS.
-   */
+      	
 public void classifyLetter(){
-   }
-
-
-   // getter functions for the massbottom, tees, corners, and
+/ getter functions for the massbottom, tees, corners, and
    // the matching letter
    public int getMassbottom(){ return massbottom;}
    public int getCorners(){ return corners;}
    public int getTees(){ return tees;}
    public char getLetter(){ return letter;}
 
+	if(4==corners){
+		if(0==tees)
+		letter=S;
+		if(2>=tees)
+		letter=B;
+	else if(2==massbottom && 2==corners && 2==tees)
+		letter=A;
+	else if(2>=massbottom && 2==corners && 0==tees)
+		letter=C;
+	else if(2>=massbottom && 2==corners && 1==tees)
+		letter=E;
+	else if(1==massbottom && 1==corners && 1==tees)
+		letter=F;
+	else if(2>=massbottom && 3==corners && 1==tees)
+		letter=G;
+	else if(2==massbottom && 0==corners && 2==tees)
+		letter=H;
+	else if(1==massbottom && 0==corners && 0==tees)
+		letter=I;
+	else if(2>=massbottom && 1==corners && 0==tees)
+		letter=L;
+	else if(2==massbottom && 2==corners && 1==tees)
+		letter=M;
+	else if(1==massbottom && 3==corners && 1==tees)
+		letter=P;
+	else if(1==massbottom && 0==corners && 1==tees)
+		letter=T;
+	else if(1==massbottom && 2==corners && 1==tees)
+		letter=Y;
+	
+	}else
+		letter=UNRECOGNIZED_LETTER;
+
+
+
+}
    /*
 
        pre: grid is not null
