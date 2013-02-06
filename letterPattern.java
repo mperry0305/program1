@@ -140,12 +140,13 @@ public void classifyLetter(){
    public int getTees(){ return tees;}
    public char getLetter(){ return letter;}
 
-	if(4==corners){
+	if(2>=massbottom && 4==corners){
 		if(0==tees)
 		letter=S;
 		if(2>=tees)
 		letter=B;
-	else if(2==massbottom && 2==corners && 2==tees)
+	}
+	if(2==massbottom && 2==corners && 2==tees){
 		letter=A;
 	else if(2>=massbottom && 2==corners && 0==tees)
 		letter=C;
