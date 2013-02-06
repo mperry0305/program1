@@ -133,8 +133,8 @@ public void extractFeatures(){
       	}//not a pattern, move onto next spot)
       	
 public void classifyLetter(){
-/ getter functions for the massbottom, tees, corners, and
-   // the matching letter
+	// getter functions for the massbottom, tees, corners, and
+   	// the matching letter
    public int getMassbottom(){ return massbottom;}
    public int getCorners(){ return corners;}
    public int getTees(){ return tees;}
@@ -148,27 +148,27 @@ public void classifyLetter(){
 	}
 	if(2==massbottom && 2==corners && 2==tees){
 		letter=A;
-	else if(2>=massbottom && 2==corners && 0==tees)
+	if(2>=massbottom && 2==corners && 0==tees)
 		letter=C;
-	else if(2>=massbottom && 2==corners && 1==tees)
+	if(2>=massbottom && 2==corners && 1==tees)
 		letter=E;
-	else if(1==massbottom && 1==corners && 1==tees)
+	if(1==massbottom && 1==corners && 1==tees)
 		letter=F;
-	else if(2>=massbottom && 3==corners && 1==tees)
+	if(2>=massbottom && 3==corners && 1==tees)
 		letter=G;
-	else if(2==massbottom && 0==corners && 2==tees)
+	if(2==massbottom && 0==corners && 2==tees)
 		letter=H;
-	else if(1==massbottom && 0==corners && 0==tees)
+	if(1==massbottom && 0==corners && 0==tees)
 		letter=I;
-	else if(2>=massbottom && 1==corners && 0==tees)
+	if(2>=massbottom && 1==corners && 0==tees)
 		letter=L;
-	else if(2==massbottom && 2==corners && 1==tees)
+	if(2==massbottom && 2==corners && 1==tees)
 		letter=M;
-	else if(1==massbottom && 3==corners && 1==tees)
+	if(1==massbottom && 3==corners && 1==tees)
 		letter=P;
-	else if(1==massbottom && 0==corners && 1==tees)
+	if(1==massbottom && 0==corners && 1==tees)
 		letter=T;
-	else if(1==massbottom && 2==corners && 1==tees)
+	if(1==massbottom && 2==corners && 1==tees)
 		letter=Y;
 	
 	}else
