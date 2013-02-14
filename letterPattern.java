@@ -1,8 +1,6 @@
 import java.util.*;
 import java.io.*;
-/// file name should agree with class name
-/// DON'T USE THE TAB CHARACTER; The Eclipse II handout explains in
-/// Section V end how to avoid it
+
 public class LetterPattern{
 
 
@@ -71,7 +69,7 @@ public void loadPattern(Scanner src){
       
 
       }
-   }if (r!=10 && src.hasNextLine()){
+	}if (r!=10 && src.hasNextLine()){
 		s=src.nextLine();
 		
 	}else
@@ -148,13 +146,8 @@ public void extractFeatures(){
                          corners++;
                      if(1==c2 && (1==b1 || 1==b3))
                          corners++;
+                     System.out.println("test 1");
                  }
-
-      else{
-         c1=grid[r-1][c-1];
-         c2=grid[r][c-1];
-         c3=grid[r+1][c-1];
-      }
       }else
     	  none++;
       }
