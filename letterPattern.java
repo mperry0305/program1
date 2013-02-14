@@ -1,3 +1,5 @@
+ReMashUp-MixDown
+
 import java.util.*;
 import java.io.*;
 /// file name should agree with class name
@@ -96,7 +98,6 @@ public void extractFeatures(){
 ///  == 1?  if it's a 0, you can just skip over to the next
 /// cell
       if(grid[r][c]==1){
-         grid[r][c[c]=this.nextLine()
       	
 
 /// actually, this grabs the leftmost column, no?
@@ -106,11 +107,8 @@ public void extractFeatures(){
       	c3=grid[r+1][c-1];
       	
 ///  ??? this can't be right;
-      	massbottom+=(c1+c2+c3);
+      	massbottom = massbottom+c1+c2+c3;
       	isMB=true;
-      	
-
-         if()
       	
          //3x3 window
       	a1=grid[r-1][c+1];
