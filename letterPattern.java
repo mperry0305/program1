@@ -45,14 +45,16 @@ public void loadPattern(Scanner src){
       
    boolean exit, haventSeen$, hasLine;
    int count0, count1, length;
+   
 
 //contents of input file
    String s = src.nextLine();
+   length = s.length();
+   
    hasLine = haventSeen$ =true;
 
 	for(int r=1;r<=10;r++){
 		for(int c=1;c<=10;c++)
-	if (hasLine && haventSeen$ && c<=length){ 
 	
 //index set to 1
 	if (hasLine && haventSeen$ && c<=length){
@@ -76,7 +78,7 @@ public void loadPattern(Scanner src){
 		hasLine=false;
 	}
    }
-}
+
 public void extractFeatures(){
 
 	int
@@ -85,7 +87,7 @@ public void extractFeatures(){
 		none,
 		total;
    	
-   int massbottom = corners = tees = count1 = i = none = total =0;
+   int massbottom = corners = tees = count1 = i = none = total = 0;
 
    int a1,a2,a3,b1,b2,b3,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11;
    
@@ -159,15 +161,12 @@ public int getMassbottom(){ return massbottom;}
 public int getCorners(){ return corners;}
 public int getTees(){ return tees;}
 public char getLetter(){ return letter;}
-         	
+    // getter functions for the massbottom, tees, corners, and
+    // the matching letter
+     	
 public void classifyLetter(){
-	// getter functions for the massbottom, tees, corners, and
-   // the matching letter
-
-   
-{
-
-	if(2>=massbottom && 4==corners){
+    
+   if(2>=massbottom && 4==corners){
 		if(0==tees)
 		letter='S';
 		if(2>=tees)
@@ -202,7 +201,7 @@ public void classifyLetter(){
 		letter=UNRECOGNIZED_LETTER;
 
 	}
-   }
+
 
 public void printPatternToScreen(){
 	
