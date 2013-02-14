@@ -1,11 +1,10 @@
-ReMashUp-MixDown
-
 import java.util.*;
 import java.io.*;
 /// file name should agree with class name
 /// DON'T USE THE TAB CHARACTER; The Eclipse II handout explains in
 /// Section V end how to avoid it
 public class LetterPattern{
+
 
    // value for letter when there is no match
    public static final char UNRECOGNIZED_LETTER = ' ';
@@ -37,13 +36,13 @@ public class LetterPattern{
    // grid will be created as a 12x12 array of 0's
    // the integer data members are initialized to 0
    // by default already; letter is set to ' '
+
 public LetterPattern(){
       grid = new int[GRID_SIZE][GRID_SIZE];
       letter = UNRECOGNIZED_LETTER;
- 
-   	
-   
+  
 }
+
 public void loadPattern(Scanner src){
       
    boolean exit, haventSeen$, hasLine;
@@ -72,10 +71,7 @@ public void loadPattern(Scanner src){
       
 
       }
-   }else if (grid[r]!=10)
-      grid[r][c]=0;
-
-	if(src.hasNextLine()){
+   }if (r!=10 && src.hasNextLine()){
 		s=src.nextLine();
 		
 	}else
@@ -84,131 +80,142 @@ public void loadPattern(Scanner src){
    }
 }
 public void extractFeatures(){
+
+	int
+		count1,
+		i,
+		none,
+		total;
    	
    int massbottom = corners = tees = count1 = i = none = total =0;
 
-   int a1,a2,a3,b1,b2,b3,c1,c2,c3;
+   int a1,a2,a3,b1,b2,b3,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11;
    
    boolean isTee, isCorner, isMB, noPttrn;
 
    for(int r=1;r<=10; r++){
-      for(int c=1;c<=10; c++)
+      for(int c=1;c<=10; c++){
          if(grid[r][c]==1)
             count1++;
-///  == 1?  if it's a 0, you can just skip over to the next
-/// cell
-      if(grid[r][c]==1){
-      	
 
-/// actually, this grabs the leftmost column, no?
-      	///bottom row
-      	c1=grid[r-1][c-1];
-      	c2=grid[r][c-1];
-      	c3=grid[r+1][c-1];
-      	
-///  ??? this can't be right;
-      	massbottom = massbottom+c1+c2+c3;
-      	isMB=true;
-      	
-         //3x3 window
-      	a1=grid[r-1][c+1];
-      	a2=grid[r][c+1];
-      	a3=grid[r+1][c+1];
-      	b1=grid[r-1][c];
-      	b2=grid[r][c];
-      	b3=grid[r+1][c];
-      	c1=grid[r-1][c-1];
-      	c2=grid[r][c-1];
-      	c3=grid[r+1][c-1];
-      	total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
-      
-//if tee
-         if(4==total){
-      	  if(1==b1 && 1==b3 && (1==c2 || 1==a2)
-      	  tees++;
+         //for massbottom
+         if(r==10){
 
-/// this gets the other 2
-      	  if(1==a2 && 1==c2 && (1==b1 || 1==b3)
-      	  tees++;
-      	}
-      
-      //if corner
-      if(3==total){
-/// b?  b? this wouldn't compile;
-/// I expect you to be able to get the syntax errors out on your own
-      	if(1==a2 && (1==b1 || 1==b)
-      	corners++;
-      	if(1==c2 && (1==b1 || 1==b3)
-      	corners++;
-     
-      }else{
+             ///bottom row
+             c1=grid[r][c];
+             c2=grid[r][c+1];
+             c3=grid[r][c+2];
+             c4=grid[r][c+3];
+             c5=grid[r][c+4];
+             c6=grid[r][c+5];
+             c7=grid[r][c+6];
+             c8=grid[r][c+7];
+             c9=grid[r][c+8];
+             c10=grid[r][c+9];
+             c11=grid[r][c+10];
+
+             massbottom = massbottom+c1+c2+c3;
+             isMB=true;
+         }
+         if(grid[r][c]==1){
+             //3x3 window
+             a1=grid[r-1][c+1];
+             a2=grid[r][c+1];
+             a3=grid[r+1][c+1];
+             b1=grid[r-1][c];
+             b2=grid[r][c];
+             b3=grid[r+1][c];
+             c1=grid[r-1][c-1];
+             c2=grid[r][c-1];
+             c3=grid[r+1][c-1];
+             total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
+
+             //if tee
+             if(4==total){
+                 if(1==b1 && 1==b3 && (1==c2 || 1==a2))
+                     tees++;
+
+                 /// this gets the other 2
+                 if(1==a2 && 1==c2 && (1==b1 || 1==b3))
+                     tees++;
+
+
+                 //if corner
+                 if(3==total){
+                     /// b?  b? this wouldn't compile;
+                     /// I expect you to be able to get the syntax errors out on your own
+                     if(1==a2 && (1==b1 || 1==b3))
+                         corners++;
+                     if(1==c2 && (1==b1 || 1==b3))
+                         corners++;
+                 }
+
+      else{
          c1=grid[r-1][c-1];
          c2=grid[r][c-1];
          c3=grid[r+1][c-1];
-      		
-  	}
+      }
+      }else
+    	  none++;
+      }
+      }
+   }
+}
 
-/// the method cannot end here;
-//not a pattern, move onto next spot)
-      	
+public int getMassbottom(){ return massbottom;}
+public int getCorners(){ return corners;}
+public int getTees(){ return tees;}
+public char getLetter(){ return letter;}
+         	
 public void classifyLetter(){
 	// getter functions for the massbottom, tees, corners, and
    // the matching letter
-   public int getMassbottom(){ return massbottom;}
-   public int getCorners(){ return corners;}
-   public int getTees(){ return tees;}
-   public char getLetter(){ return letter;}
+
+   
+{
 
 	if(2>=massbottom && 4==corners){
 		if(0==tees)
-		letter=S;
+		letter='S';
 		if(2>=tees)
-		letter=B;
+		letter='B';
 	}
-	if(2==massbottom && 2==corners && 2==tees){
-		letter=A;
+	if(2==massbottom && 2==corners && 2==tees)
+		letter='A';
 	if(2>=massbottom && 2==corners && 0==tees)
-		letter=C;
+		letter='C';
 	if(2>=massbottom && 2==corners && 1==tees)
-		letter=E;
+		letter='E';
 	if(1==massbottom && 1==corners && 1==tees)
-		letter=F;
+		letter='F';
 	if(2>=massbottom && 3==corners && 1==tees)
-		letter=G;
+		letter='G';
 	if(2==massbottom && 0==corners && 2==tees)
-		letter=H;
+		letter='H';
 	if(1==massbottom && 0==corners && 0==tees)
-		letter=I;
+		letter='I';
 	if(2>=massbottom && 1==corners && 0==tees)
-		letter=L;
+		letter='L';
 	if(2==massbottom && 2==corners && 1==tees)
-		letter=M;
+		letter='M';
 	if(1==massbottom && 3==corners && 1==tees)
-		letter=P;
+		letter='P';
 	if(1==massbottom && 0==corners && 1==tees)
-		letter=T;
+		letter='T';
 	if(1==massbottom && 2==corners && 1==tees)
-		letter=Y;
+		letter='Y';
 	
-	}else
+	else
 		letter=UNRECOGNIZED_LETTER;
 
+	}
+   }
 
-
-}
-   /*
-
-       pre: grid is not null
-
-       post: grid is not modified its full contents(all 12 rows of 12 columns)
-          has been printed to the screen, line by line
-
-   */
 public void printPatternToScreen(){
 	
 	for(int r=0;r<=10;r++){
 		for(int c=0;c<=10;c++)
-		System.out.printf(grid[r][c]);
+		System.out.println(grid[r][c]);
 	}
    }
 
