@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class LetterPattern{
+public class letterPattern{
 
 
    // value for letter when there is no match
@@ -35,7 +35,7 @@ public class LetterPattern{
    // the integer data members are initialized to 0
    // by default already; letter is set to ' '
 
-public LetterPattern(){
+public letterPattern(){
       grid = new int[GRID_SIZE][GRID_SIZE];
       letter = UNRECOGNIZED_LETTER;
   
@@ -60,7 +60,6 @@ public void loadPattern(Scanner src){
 	if (hasLine && haventSeen$ && c<=length){
       if (s.charAt(c-1)=='*'){
          grid[r][c] = 1;
-         count1++;
       
 //index 0
       }else{
@@ -87,7 +86,7 @@ public void extractFeatures(){
 		none,
 		total;
    	
-   int massbottom = corners = tees = count1 = i = none = total = 0;
+    massbottom = corners = tees = count1 = i = none = total = 0;
 
    int a1,a2,a3,b1,b2,b3,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11;
    
@@ -95,28 +94,9 @@ public void extractFeatures(){
 
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++){
-         if(grid[r][c]==1)
+         if(grid[r][c]==1){
             count1++;
-
-         //for massbottom
-         if(r==10){
-
-             ///bottom row
-             c1=grid[r][c];
-             c2=grid[r][c+1];
-             c3=grid[r][c+2];
-             c4=grid[r][c+3];
-             c5=grid[r][c+4];
-             c6=grid[r][c+5];
-             c7=grid[r][c+6];
-             c8=grid[r][c+7];
-             c9=grid[r][c+8];
-             c10=grid[r][c+9];
-             c11=grid[r][c+10];
-
-             massbottom = massbottom+c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+c11;
-             isMB=true;
-         }
+      }
          if(grid[r][c]==1){
              //3x3 window
              a1=grid[r-1][c+1];
@@ -139,7 +119,7 @@ public void extractFeatures(){
                  if(1==a2 && 1==c2 && (1==b1 || 1==b3))
                      tees++;
 
-
+             }
                  //if corner
                  if(3==total){
                      /// b?  b? this wouldn't compile;
@@ -148,14 +128,13 @@ public void extractFeatures(){
                          corners++;
                      if(1==c2 && (1==b1 || 1==b3))
                          corners++;
-                     System.out.println("test 1");
                  }
       }else
     	  none++;
       }
       }
    }
-}
+
 
 public int getMassbottom(){ return massbottom;}
 public int getCorners(){ return corners;}
@@ -231,7 +210,7 @@ public void reportResultsToStdout(int patternNum){
       "\n   Num of Tees = " + tees);
 
       System.out.print("\n   These feature values ");
-      if (letter == LetterPattern.UNRECOGNIZED_LETTER)
+      if (letter == letterPattern.UNRECOGNIZED_LETTER)
          System.out.println("do not match any letter.");
       else
          System.out.println("match " + letter);
@@ -249,7 +228,7 @@ public void reportResultsToStdout(int patternNum){
 public static void main(String[] args){
 
       Scanner src;
-      LetterPattern lp = new LetterPattern();
+      letterPattern lp = new letterPattern();
       int
          patternNumber = 1;
 
