@@ -1,5 +1,8 @@
 import java.util.*;
 import java.io.*;
+/// file name should agree with class name
+/// DON'T USE THE TAB CHARACTER; The Eclipse II handout explains in
+/// Section V end how to avoid it
 public class LetterPattern{
 
    // value for letter when there is no match
@@ -41,34 +44,35 @@ public LetterPattern(){
 }
 public void loadPattern(Scanner src){
       
-   private boolean exit, haventSeen$, hasLine;
-   private int 0count, 1count, NA;
+   boolean exit, haventSeen$, hasLine;
+   int count0, count1, length;
 
-   //contents of input file
+//contents of input file
    String s = src.nextLine();
    hasLine = haventSeen$ =true;
 
 	for(int r=1;r<=10;r++){
 		for(int c=1;c<=10;c++)
-	if (hasLine && haventSeen$ && c<=s.length()){ 
+	if (hasLine && haventSeen$ && c<=length){ 
 	
-	//index set to 1
-	if (s.charAt(c-1)=='*'){
-   		grid[r][c] = 1;
-   		1count++;
-   	
-   	//index set to 0
-   	else{
-   		grid[r][c]=0;
-   		0count++;
-	
-	if(s.charAt(c-1)=='$')
-   		haventSeen$=false;
-   	
-	//insurance 0
-	}}else
-		grid[r][c]=0;
-	
+//index set to 1
+	if (hasLine && haventSeen$ && c<=length){
+      if (s.charAt(c-1)=='*'){
+         grid[r][c] = 1;
+         count1++;
+      
+//index 0
+      }else{
+         grid[r][c]=0;
+      
+         if(s.charAt(c-1)=='$')
+            haventSeen$=false;
+      
+
+      }
+   }else if (grid[r]!=10)
+      grid[r][c]=0;
+
 	if(src.hasNextLine()){
 		s=src.nextLine();
 		
@@ -79,28 +83,36 @@ public void loadPattern(Scanner src){
 }
 public void extractFeatures(){
    	
-   private int i=0, none=0, total=0;
-   	massbottom=0, corners=0, tees=0;
-   private int a1,a2,a3,b1,b2,b3,c1,c2,c3;
+   int massbottom = corners = tees = count1 = i = none = total =0;
+
+   int a1,a2,a3,b1,b2,b3,c1,c2,c3;
    
    boolean isTee, isCorner, isMB, noPttrn;
 
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++)
-      
-      if(grid[r][c]!=1){
+         if(grid[r][c]==1)
+            count1++;
+///  == 1?  if it's a 0, you can just skip over to the next
+/// cell
+      if(grid[r][c]==1){
+         grid[r][c[c]=this.nextLine()
       	
+
+/// actually, this grabs the leftmost column, no?
       	///bottom row
       	c1=grid[r-1][c-1];
       	c2=grid[r][c-1];
       	c3=grid[r+1][c-1];
       	
+///  ??? this can't be right;
       	massbottom+=(c1+c2+c3);
       	isMB=true;
       	
-      }else
+
+         if()
       	
-      	//3x3 window
+         //3x3 window
       	a1=grid[r-1][c+1];
       	a2=grid[r][c+1];
       	a3=grid[r+1][c+1];
@@ -112,29 +124,38 @@ public void extractFeatures(){
       	c3=grid[r+1][c-1];
       	total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
       
-      //if tee
-      if(4==total){
-      	if(1==b1 && 1==b3 && (1==c2 || 1==a2)
-      	tees++;
-      	if(1==a2 && 1==c2 && (1==b1 || 1==b3)
-      	tees++;
-      	
-      }
+//if tee
+         if(4==total){
+      	  if(1==b1 && 1==b3 && (1==c2 || 1==a2)
+      	  tees++;
+
+/// this gets the other 2
+      	  if(1==a2 && 1==c2 && (1==b1 || 1==b3)
+      	  tees++;
+      	}
+      
       //if corner
       if(3==total){
+/// b?  b? this wouldn't compile;
+/// I expect you to be able to get the syntax errors out on your own
       	if(1==a2 && (1==b1 || 1==b)
       	corners++;
       	if(1==c2 && (1==b1 || 1==b3)
       	corners++;
-      }
+     
+      }else{
+         c1=grid[r-1][c-1];
+         c2=grid[r][c-1];
+         c3=grid[r+1][c-1];
       		
-  	}else{
-      		none++;
-      	}//not a pattern, move onto next spot)
+  	}
+
+/// the method cannot end here;
+//not a pattern, move onto next spot)
       	
 public void classifyLetter(){
 	// getter functions for the massbottom, tees, corners, and
-   	// the matching letter
+   // the matching letter
    public int getMassbottom(){ return massbottom;}
    public int getCorners(){ return corners;}
    public int getTees(){ return tees;}
