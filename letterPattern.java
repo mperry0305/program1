@@ -1,3 +1,4 @@
+//MEEN
 import java.util.*;
 import java.io.*;
 
@@ -45,47 +46,47 @@ public void loadPattern(Scanner src){
       
    boolean exit, haventSeen$, hasLine;
    int count0, count1, length;
+   String s;
    
+   hasLine=haventSeen$=true;
 
-//contents of input file
-   String s = src.nextLine();
-   length = s.length();
-   
-   hasLine = haventSeen$ =true;
+    for(int r=1;r<=10;r++){
+        for(int c=1;c<=10;c++){
 
-	for(int r=1;r<=10;r++){
-		for(int c=1;c<=10;c++)
-	
 //index set to 1
-	if (hasLine && haventSeen$ && c<=length){
-      if (s.charAt(c-1)=='*'){
-         grid[r][c] = 1;
+            if (hasLine && haventSeen$ && c<=length){
+                if (src.hasNextLine() && s.charAt(c-1)=='*'){
+                    s = src.nextLine();
+                    length = s.length();
+                    grid[r][c] = 1;
       
 //index 0
-      }else{
-         grid[r][c]=0;
+                }else{
+                    grid[r][c]=0;
       
-         if(s.charAt(c-1)=='$')
-            haventSeen$=false;
+                    if(s.charAt(c-1)=='$')
+                        haventSeen$=false;
       
 
-      }
-	}if (r!=10 && src.hasNextLine()){
-		s=src.nextLine();
-		
-	}else
-		hasLine=false;
-	}
-   }
+                }
+            }if (r!=10 && src.hasNextLine()){
+                s=src.nextLine();
+                length = s.length();
 
+            }else
+                hasLine=false;
+                grid[r][c]=0;
+        }
+    }
+}
 public void extractFeatures(){
 
-	int
-		count1,
-		i,
-		none,
-		total;
-   	
+    int
+        count1,
+        i,
+        none,
+        total;
+    
     massbottom = corners = tees = count1 = i = none = total = 0;
 
    int a1,a2,a3,b1,b2,b3,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11;
@@ -94,9 +95,10 @@ public void extractFeatures(){
 
    for(int r=1;r<=10; r++){
       for(int c=1;c<=10; c++){
-         if(grid[r][c]==1){
+         if(grid[r][c]==1 && noPttrn==false){
             count1++;
-      }
+            massbottom++;
+         }
          if(grid[r][c]==1){
              //3x3 window
              a1=grid[r-1][c+1];
@@ -110,7 +112,7 @@ public void extractFeatures(){
              c3=grid[r+1][c-1];
              total+=(a1+a2+a3+b1+b2+b3+c1+c2+c3);
 
-             //if tee
+             //if tee part 1
              if(4==total){
                  if(1==b1 && 1==b3 && (1==c2 || 1==a2))
                      tees++;
@@ -121,19 +123,20 @@ public void extractFeatures(){
 
              }
                  //if corner
-                 if(3==total){
-                     /// b?  b? this wouldn't compile;
-                     /// I expect you to be able to get the syntax errors out on your own
-                     if(1==a2 && (1==b1 || 1==b3))
+             if(3==total){
+                 if(1==a2 && (1==b1 || 1==b3))
                          corners++;
-                     if(1==c2 && (1==b1 || 1==b3))
+                 if(1==c2 && (1==b1 || 1==b3))
                          corners++;
-                 }
-      }else
-    	  none++;
+             }
+         }else
+             noPttrn=true;
       }
-      }
+      //debugger (i think...)
+      if(massbottom>=10)
+          System.out.println("this is wrong, if you see this message, then the program is farked!");
    }
+}
 
 
 public int getMassbottom(){ return massbottom;}
@@ -142,53 +145,57 @@ public int getTees(){ return tees;}
 public char getLetter(){ return letter;}
     // getter functions for the massbottom, tees, corners, and
     // the matching letter
-     	
+        
 public void classifyLetter(){
+   
     
-   if(2>=massbottom && 4==corners){
-		if(0==tees)
-		letter='S';
-		if(2>=tees)
-		letter='B';
-	}
-	if(2==massbottom && 2==corners && 2==tees)
-		letter='A';
-	if(2>=massbottom && 2==corners && 0==tees)
-		letter='C';
-	if(2>=massbottom && 2==corners && 1==tees)
-		letter='E';
-	if(1==massbottom && 1==corners && 1==tees)
-		letter='F';
-	if(2>=massbottom && 3==corners && 1==tees)
-		letter='G';
-	if(2==massbottom && 0==corners && 2==tees)
-		letter='H';
-	if(1==massbottom && 0==corners && 0==tees)
-		letter='I';
-	if(2>=massbottom && 1==corners && 0==tees)
-		letter='L';
-	if(2==massbottom && 2==corners && 1==tees)
-		letter='M';
-	if(1==massbottom && 3==corners && 1==tees)
-		letter='P';
-	if(1==massbottom && 0==corners && 1==tees)
-		letter='T';
-	if(1==massbottom && 2==corners && 1==tees)
-		letter='Y';
-	
-	else
-		letter=UNRECOGNIZED_LETTER;
-
-	}
+    letter=UNRECOGNIZED_LETTER;
+   
+    if(2>=massbottom && 4==corners){
+        if(0==tees)
+        letter='S';
+        if(2>=tees)
+        letter='B';
+    }
+    if(2==massbottom && 2==corners && 2==tees)
+        letter='A';
+    if(2>=massbottom && 2==corners && 0==tees)
+        letter='C';
+    if(2>=massbottom && 2==corners && 1==tees)
+        letter='E';
+    if(1==massbottom && 1==corners && 1==tees)
+        letter='F';
+    if(2>=massbottom && 3==corners && 1==tees)
+        letter='G';
+    if(2==massbottom && 0==corners && 2==tees)
+        letter='H';
+    if(1==massbottom && 0==corners && 0==tees)
+        letter='I';
+    if(2>=massbottom && 1==corners && 0==tees)
+        letter='L';
+    if(2==massbottom && 2==corners && 1==tees)
+        letter='M';
+    if(1==massbottom && 3==corners && 1==tees)
+        letter='P';
+    if(1==massbottom && 0==corners && 1==tees)
+        letter='T';
+    if(1==massbottom && 2==corners && 1==tees)
+        letter='Y';
+    
+}
 
 
 public void printPatternToScreen(){
-	
-	for(int r=0;r<=10;r++){
-		for(int c=0;c<=10;c++)
-		System.out.println(grid[r][c]);
-	}
-   }
+
+    for(int r=0;r<=10;r++){
+        for(int c=0;c<=10;c++)
+            
+            if(grid[r][c]>=10){
+            System.out.print(grid[r]);
+            }else
+                System.out.println(grid[r]);
+    }
+}
 
    /*
 
